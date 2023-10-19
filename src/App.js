@@ -9,6 +9,9 @@ import Nnw from './classes/Nnw';
 
 function App() {
   const [chat, setChat] = useState('Hello Hestia!');
+  const [med, setMed] = useState(null);
+  const [nnw, setNnw] = useState(null);
+  const [pol, setPol] = useState(null);
   const [medWait, setMedWait] = useState(null);
   const [nnwWait, setNnwWait] = useState(null);
   const [polWait, setPolWait] = useState(null);
@@ -19,6 +22,13 @@ function App() {
     setChat(value);
   }
 
+  const isRendered = () => {
+    if (medWait === true && nnwWait === true && polWait === true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return (
     <div className="App">
@@ -36,25 +46,25 @@ function App() {
       <div className="row">
         <div className="py-5 text-center">
         {medWait === null && nnwWait === null && polWait === null ? (
-            <p></p>
+            <span></span>
         ) : (
           <h2>Dane pobrane</h2>
         )}
-        
-        {medWait === null ? (
-            <p></p>
+        {isRendered() && (<div className="spinner-border text-primary" role="status"></div>)}
+        {medWait == false ? (
+            <Med />
         ) : (
-          <p>{medWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Med />)}</p>
+          <span></span>
         )}
-        {polWait === null ? (
-            <p></p>
+        {polWait == false ? (
+            <Pol />
         ) : (
-          <p>{polWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Pol />)}</p>
+          <span></span>
         )}
-        {nnwWait === null ? (
-            <p></p>
+        {nnwWait == false ? (
+            <Nnw />
         ) : (
-          <p>{nnwWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Nnw />)}</p>
+          <span></span>
         )}
         </div>
       </div>
