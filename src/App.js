@@ -9,7 +9,14 @@ import Nnw from './classes/Nnw';
 
 function App() {
   const [chat, setChat] = useState('Hello Hestia!');
+  const [medWait, setMedWait] = useState(null);
+  const [nnwWait, setNnwWait] = useState(null);
+  const [polWait, setPolWait] = useState(null);
 
+  medWait = null;
+  nnwWait = null;
+  polWait = null;
+  
   const updateChat = (value) => {
     console.log('Aktualizacja odpowiedzi:', value);
     setChat(value);
@@ -21,7 +28,7 @@ function App() {
       <div className="row">
         <div className="col-sm-4 border border-dark rounded">
           <h3>Analiza</h3>
-          <Form updateChat={updateChat}/>
+          <Form updateChat={updateChat} setMedWait={setMedWait} setNnwWait={setNnwWait} setPolWait={setPolWait}/>
         </div>
         <div className="col-sm-8">
           <h3>Streszczenie ChatGPT</h3>
@@ -32,6 +39,12 @@ function App() {
       <div className="row">
         <div className="py-5 text-center">
         <h2>Dane pobrane</h2>
+        {medWait === null ? (
+            <p></p>
+        ) : (
+          <p>{medWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Med />)}</p>
+        )}
+        
         <Med />
         <Pol />
         <Nnw />

@@ -34,6 +34,9 @@ class Form extends Component {
         this.setState({med_wait: true});
         this.setState({pol_wait: true});
         this.setState({nnw_wait: true});
+        this.props.setMedWait(true);
+        this.props.setPolWait(true);
+        this.props.setNnwWait(true);
         setTimeout(() => {
           this.setState({med_wait: false});
           this.setState({pol_wait: false});
