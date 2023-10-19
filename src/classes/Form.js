@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
+import FetchDataFromAPI from "./FetchDataFromAPI";
 
 
 class Form extends Component {
@@ -54,6 +55,7 @@ class Form extends Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
+            <FetchDataFromAPI/>
         <div className="form-group">
         <label htmlFor="selectField">Wybierz model do analizy</label>
           <select className="form-select" id="selectField" value={this.state.model} onChange={this.handleModelChange}>

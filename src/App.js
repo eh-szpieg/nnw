@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Med from './classes/Med';
 import Pol from './classes/Pol';
 import Nnw from './classes/Nnw';
+import ChatWindow from "./classes/ChatWindow";
+import DocumentData from "./classes/DocumentData";
 
 function App() {
   const [chat, setChat] = useState('Hello Hestia!');
@@ -27,6 +29,7 @@ function App() {
           <h3>Analiza</h3>
           <Form updateChat={updateChat} setMedWait={setMedWait} setNnwWait={setNnwWait} setPolWait={setPolWait}/>
         </div>
+        <DocumentData/>
         <div className="col-sm-8">
           <h3>Streszczenie ChatGPT</h3>
           <Chat value={chat}/>
@@ -57,6 +60,7 @@ function App() {
           <p>{nnwWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Nnw />)}</p>
         )}
         </div>
+        <ChatWindow/>
       </div>
     </div>
   );
