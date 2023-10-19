@@ -11,7 +11,7 @@ function App() {
   const [chat, setChat] = useState('Hello Hestia!');
   var [medWait, setMedWait] = useState(null);
   var [nnwWait, setNnwWait] = useState(null);
-  var 1[polWait, setPolWait] = useState(null);
+  var [polWait, setPolWait] = useState(null);
 
   medWait = null;
   nnwWait = null;
