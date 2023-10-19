@@ -36,9 +36,19 @@ class Med extends Component {
         console.log(this.state);
     }
 
-    redner() {
-
-    }
+    render() {
+        return (
+        <div className="row border border-dark rounded mb-3">
+            <h3>Dokumentacja Medyczna</h3>
+            <div className="col-sm-6 ">
+                <h3>Dane poszkodowanego</h3>
+            </div>
+            <div className="col-sm-6">
+                <h3>Diagnoza medyczna</h3>
+            </div>
+        </div>
+            );
+        }
 }
 
 export default Med;
