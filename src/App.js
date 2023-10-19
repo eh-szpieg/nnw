@@ -9,14 +9,14 @@ import Nnw from './classes/Nnw';
 
 function App() {
   const [chat, setChat] = useState('Hello Hestia!');
-  const [medWait, setMedWait] = useState(null);
-  const [nnwWait, setNnwWait] = useState(null);
-  const [polWait, setPolWait] = useState(null);
+  var [medWait, setMedWait] = useState(null);
+  var [nnwWait, setNnwWait] = useState(null);
+  var 1[polWait, setPolWait] = useState(null);
 
   medWait = null;
   nnwWait = null;
   polWait = null;
-  
+
   const updateChat = (value) => {
     console.log('Aktualizacja odpowiedzi:', value);
     setChat(value);
