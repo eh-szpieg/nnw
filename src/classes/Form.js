@@ -41,6 +41,9 @@ class Form extends Component {
           this.setState({med_wait: false});
           this.setState({pol_wait: false});
           this.setState({nnw_wait: false});
+          this.props.setMedWait(false);
+          this.props.setPolWait(false);
+          this.props.setNnwWait(false);
         }, 2000);
         this.props.updateChat("Analizuę pakiet: " + this.state.pack + " z wykorzystaniem modelu: " + this.state.model);
         console.log(this.state.pack);

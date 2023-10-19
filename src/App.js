@@ -9,13 +9,10 @@ import Nnw from './classes/Nnw';
 
 function App() {
   const [chat, setChat] = useState('Hello Hestia!');
-  var [medWait, setMedWait] = useState(null);
-  var [nnwWait, setNnwWait] = useState(null);
-  var [polWait, setPolWait] = useState(null);
+  const [medWait, setMedWait] = useState(null);
+  const [nnwWait, setNnwWait] = useState(null);
+  const [polWait, setPolWait] = useState(null);
 
-  medWait = null;
-  nnwWait = null;
-  polWait = null;
 
   const updateChat = (value) => {
     console.log('Aktualizacja odpowiedzi:', value);
@@ -38,16 +35,27 @@ function App() {
       </div>
       <div className="row">
         <div className="py-5 text-center">
-        <h2>Dane pobrane</h2>
+        {medWait === null && nnwWait === null && polWait === null ? (
+            <p></p>
+        ) : (
+          <h2>Dane pobrane</h2>
+        )}
+        
         {medWait === null ? (
             <p></p>
         ) : (
           <p>{medWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Med />)}</p>
         )}
-        
-        <Med />
-        <Pol />
-        <Nnw />
+        {polWait === null ? (
+            <p></p>
+        ) : (
+          <p>{polWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Pol />)}</p>
+        )}
+        {nnwWait === null ? (
+            <p></p>
+        ) : (
+          <p>{nnwWait ? (<div className="spinner-border text-primary" role="status"></div>):(<Nnw />)}</p>
+        )}
         </div>
       </div>
     </div>
