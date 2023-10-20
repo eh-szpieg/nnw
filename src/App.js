@@ -22,6 +22,12 @@ function App() {
     setChat(value);
   }
 
+
+  const updateMed = (value) => {
+    console.log('Aktualizacja Med:', value);
+    setMed(value);
+  }
+
   const isRendered = () => {
     if (medWait === true && nnwWait === true && polWait === true) {
       return true;
@@ -35,7 +41,7 @@ function App() {
       <div className="row">
         <div className="col-sm-4 border border-dark rounded">
           <h3>Analiza</h3>
-          <Form updateChat={updateChat} setMedWait={setMedWait} setNnwWait={setNnwWait} setPolWait={setPolWait}/>
+          <Form updateChat={updateChat} setMedWait={setMedWait} setNnwWait={setNnwWait} setPolWait={setPolWait} updateMed={setMed} setNnw={setNnw} setPol={setPol}/>
         </div>
         <div className="col-sm-8">
           <h3>Streszczenie ChatGPT</h3>
@@ -52,17 +58,17 @@ function App() {
         )}
         {isRendered() && (<div className="spinner-border text-primary" role="status"></div>)}
         {medWait == false ? (
-            <Med />
+            <Med value={med}/>
         ) : (
           <span></span>
         )}
         {polWait == false ? (
-            <Pol />
+            <Pol value={pol}/>
         ) : (
           <span></span>
         )}
         {nnwWait == false ? (
-            <Nnw />
+            <Nnw value={nnw}/>
         ) : (
           <span></span>
         )}

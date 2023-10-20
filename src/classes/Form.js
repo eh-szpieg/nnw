@@ -100,31 +100,31 @@ class Form extends Component {
 
         try{
           const response = await recognizeDocument(this.state.med_url, this.state.med_type, this.state.model)
-          console.log(response['result']);
-
+          console.log(response);
+          this.props.updateMed(response);
           this.props.setMedWait(false);
           this.setState({med_wait: false});
         } catch (error) {
           console.log(error);
         }
-        try{
-          const response = await recognizeDocument(this.state.pol_url, this.state.pol_type, this.state.model)
-          console.log(response['result']);
+        // try{
+        //   const response = await recognizeDocument(this.state.pol_url, this.state.pol_type, this.state.model)
+        //   console.log(response);
 
-          this.props.setNnwWait(false);
-          this.setState({pol_wait: false});
-        } catch (error) {
-          console.log(error);
-        }
-        try{
-          const response = await recognizeDocument(this.state.nnw_url, this.state.nnw_type, this.state.model)
-          console.log(response['result']);
+        //   this.props.setNnwWait(false);
+        //   this.setState({pol_wait: false});
+        // } catch (error) {
+        //   console.log(error);
+        // }
+        // try{
+        //   const response = await recognizeDocument(this.state.nnw_url, this.state.nnw_type, this.state.model)
+        //   console.log(response);
 
-          this.props.setPolWait(false);
-          this.setState({nnw_wait: false});
-        } catch (error) {
-          console.log(error);
-        }
+        //   this.props.setPolWait(false);
+        //   this.setState({nnw_wait: false});
+        // } catch (error) {
+        //   console.log(error);
+        // }
         
         
 
