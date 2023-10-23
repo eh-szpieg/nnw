@@ -6,6 +6,7 @@ class Chat extends Component {
         return (
                 <div>
                     <p>{this.props.value}</p>
+                    {this.props.wait === true && (<div className="spinner-border text-primary" role="status"></div>)}
                 </div>
             );
         }

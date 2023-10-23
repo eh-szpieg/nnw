@@ -1,35 +1,40 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
+import label from '../functions/labels';
 
 class Med extends Component {
 
-    label = (key) => {
-        switch (key) {
-            case "alcohol":
-                return 'Czy pod wpływem alkoholu?';
-            case "pesel":
-                return 'PESEL';
-            case "personalDetails":
-                return "Dane osobowe";
-            case "adressData":
-                return "Dane adresowe";
-            case "ICD10Code":
-                return 'Kod ICD10';
-            case "description":
-                return 'Opis';
-            default:
-                return 'Nieznany';
+    alcohol = (name, value) => {
+        if(name === 'alcohol'){
+          if(value === true){
+            return "Tak";
+          } else {  
+            return "Nie";
+          }
+        } else if(value === null){
+          return "Brak danych";
+        } else {
+          return value;
         }
     }
 
+    spacja = () => {
+      return " ";
+    }
+
+
     render() {
         return (
-        <div className="row border border-dark rounded mb-3 text-left">
-            <h3>Dokumentacja Medyczna</h3>
+        <div className="row border-bottom mb-3 text-left">
+            <h5>Dokumentacja Medyczna</h5>
             <div className="col-sm-12 ">
             {this.props.value.map((item, index) => (
-                    <ul class="list-group list-group-flush text-left" key={index}>
-                         <li class="list-group-item">{this.label(item.name)}: {item.value} ({item.confidence * 100})</li>
+                    <ul className="list-group list-group-flush text-left" key={index}>
+                            <li className="list-group-item"><span className='fw-bold'>{label(item.name)}</span>:
+                            {this.spacja()}
+                            {this.alcohol(item.name, item.value)}
+                            {this.spacja()}
+                            ({Math.round(item.confidence * 100)}%)</li>
                     </ul>
             ))}
             </div>
